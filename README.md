@@ -1,4 +1,4 @@
-# App1 Frontend
+# App Frontend
 
 ## Description
 This is the frontend application for App1.
