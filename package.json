@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "script:tree": "tree -a -I 'node_modules|.idea|.git|.vscode'"
+    "script:tree": "tree -a -I 'node_modules|.idea|.git|.vscode'",
+    "start:dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
