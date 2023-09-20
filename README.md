@@ -14,6 +14,9 @@
 - [Installation](#installation)
     - [Local Installation](#local-installation)
     - [Docker Installation](#docker-installation)
+- [Docker Compose Configuration](#docker-compose-configuration)
+    - [Standalone Static Page](#standalone-static-page)
+    - [With API Backend](#with-api-backend)
 - [Running the Application](#running-the-application)
     - [Development](#development)
     - [Docker Development](#docker-development)
@@ -111,6 +114,40 @@ To utilise a GOV.UK Frontend component within a Nunjucks template, simply includ
     ```
 
 ## Running the Application
+
+
+## Docker Compose Configuration
+
+The `docker-compose-local.yml` file is configured to allow the application to run in two modes:
+
+1. **Standalone**: In this mode, the application without requiring a backend service.
+2. **With API Backend**: In this mode, the application connects to a separate API backend service for dynamic data.
+
+### Standalone Static Page
+
+If you intend to run the application as a standalone application, you can simply remove or comment out the `external_links` section in the `docker-compose-local.yml` file:
+
+```yml
+# external_links:
+#   - api_backend 
+```
+
+### With API Backend
+
+If you wish to connect the application to a separate API backend running in another Docker container, you'll need to specify the backend service in the `external_links` section:
+
+```yml
+external_links:
+  - api_backend # Change this to your backend if it's called something different
+```
+
+Replace `api_backend` with the name of your backend container if it's different.
+
+To run the application in either mode, navigate to the `docker_local` directory and execute:
+
+```bash
+docker-compose -f docker-compose-local.yml up
+```
 
 ### Development
 
