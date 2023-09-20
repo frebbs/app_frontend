@@ -106,20 +106,6 @@ To utilise a GOV.UK Frontend component within a Nunjucks template, simply includ
     npm install
     ```
 
-### Docker Installation
-
-1. **Navigate to the `docker_local` directory**
-    ```bash
-    cd docker_local
-    ```
-2. **Run the local build script**
-    ```bash
-    ./local_build.sh
-    ```
-
-## Running the Application
-
-
 ## Docker Compose Configuration
 
 The `docker-compose-local.yml` file is configured to allow the application to run in two modes:
@@ -157,13 +143,14 @@ docker-compose -f docker-compose-local.yml up
 
 To run the application in development mode, execute the following command:
 
-```bash
-npm run dev
-```
-
-### Docker Development
-
-To run the application in a Docker container, navigate to the `docker_local` directory and execute:
+1. **Navigate to the `docker_local` directory**
+    ```bash
+    cd docker_local
+    ```
+2. **Run the local build script**
+    ```bash
+    ./local_build.sh
+    ```
 
 ```bash
 docker-compose -f docker-compose-local.yml up
