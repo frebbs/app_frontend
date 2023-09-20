@@ -12,9 +12,11 @@
     - [Configuration](#configuration)
     - [Usage](#usage)
 - [Installation](#installation)
+    - [Local Installation](#local-installation)
+    - [Docker Installation](#docker-installation)
 - [Running the Application](#running-the-application)
     - [Development](#development)
-    - [Viewing the Application](#viewing-the-application)
+    - [Docker Development](#docker-development)
 - [Directory Structure](#directory-structure)
 - [Nunjucks Templating](#nunjucks-templating)
 - [Understanding `package.json`](#understanding-packagejson)
@@ -27,6 +29,7 @@ This frontend application is constructed utilising Express, Nunjucks, and the GO
 
 - Node.js v20.6.1 (as specified in `.nvmrc`)
 - npm (bundled with Node.js)
+- Docker (if using Docker for development)
 
 ## Dependencies
 
@@ -84,18 +87,27 @@ To utilise a GOV.UK Frontend component within a Nunjucks template, simply includ
 
 ## Installation
 
+### Local Installation
+
 1. **Clone the repository**
-
 2. **Navigate to the project directory**
-
     ```bash
     cd app_frontend
     ```
-
 3. **Install Node.js dependencies**
-
     ```bash
     npm install
+    ```
+
+### Docker Installation
+
+1. **Navigate to the `docker_local` directory**
+    ```bash
+    cd docker_local
+    ```
+2. **Run the local build script**
+    ```bash
+    ./local_build.sh
     ```
 
 ## Running the Application
@@ -106,6 +118,14 @@ To run the application in development mode, execute the following command:
 
 ```bash
 npm run dev
+```
+
+### Docker Development
+
+To run the application in a Docker container, navigate to the `docker_local` directory and execute:
+
+```bash
+docker-compose -f docker-compose-local.yml up
 ```
 
 ### Viewing the Application
