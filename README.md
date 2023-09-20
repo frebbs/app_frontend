@@ -13,13 +13,11 @@
     - [Usage](#usage)
 - [Installation](#installation)
     - [Local Installation](#local-installation)
-    - [Docker Installation](#docker-installation)
 - [Docker Compose Configuration](#docker-compose-configuration)
     - [Standalone Static Page](#standalone-static-page)
     - [With API Backend](#with-api-backend)
-- [Running the Application](#running-the-application)
-    - [Development](#development)
-    - [Docker Development](#docker-development)
+- [Running the Application](#Development)
+    - [With Docker](#Development)
 - [Debugging](#debugging)
     - [Debugging with IntelliJ IDEA](#debugging-with-intellij-idea)
     - [Debugging with Visual Studio Code](#debugging-with-visual-studio-code)
@@ -262,6 +260,7 @@ npm run dev
 
 Certainly! Here's the guide in Markdown format, suitable for inclusion in your README file:
 
+# Debugging
 
 ## Debugging with IntelliJ IDEA
 
