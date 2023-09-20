@@ -23,7 +23,7 @@ nunjucks.configure([
 app.set('view engine', 'njk');
 
 app.get('/', (req, res) => {
-    res.render('root');
+    res.render('home');
 })
 
 app.listen(PORT, () => {
