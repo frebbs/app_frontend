@@ -20,6 +20,10 @@
 - [Running the Application](#running-the-application)
     - [Development](#development)
     - [Docker Development](#docker-development)
+- [Debugging](#debugging)
+    - [Debugging with IntelliJ IDEA](#debugging-with-intellij-idea)
+    - [Debugging with Visual Studio Code](#debugging-with-visual-studio-code)
+- [BrowserSync](#browsersync)
 - [Directory Structure](#directory-structure)
 - [Nunjucks Templating](#nunjucks-templating)
 - [Understanding `package.json`](#understanding-packagejson)
@@ -172,6 +176,29 @@ Open a web browser and navigate to:
 ```
 http://localhost:8080
 ```
+## BrowserSync
+
+BrowserSync is a powerful tool that helps save time by automatically reloading your browser or even multiple browsers at the same time whenever file changes are detected.
+
+### Running BrowserSync
+
+To run BrowserSync alongside your development server, you can use the following npm script:
+
+```bash
+npm run start:browserSync
+```
+
+This script is configured to watch for changes in `.njk` files in the `/views` directory, as well as `.js` and `.css` files in the `/public` directory. When changes are detected, BrowserSync will automatically reload the browser.
+
+### When Not to Use BrowserSync
+
+While BrowserSync is incredibly useful for front-end development, there are scenarios where it may not be appropriate:
+
+1. **Production Environment**: Never use BrowserSync in a production environment. It is a development tool and not meant for production use.
+
+2. **Heavy Backend Logic**: If you're working primarily on server-side logic and not on the front-end, running BrowserSync might be unnecessary.
+
+3. **Limited Resources**: BrowserSync can be resource-intensive. If you're running on a machine with limited resources, you might want to skip it.
 
 ## Directory Structure
 
@@ -245,3 +272,152 @@ To run the development server and Sass compiler concurrently, use:
 ```bash
 npm run dev
 ```
+
+Certainly! Here's the guide in Markdown format, suitable for inclusion in your README file:
+
+
+## Debugging with IntelliJ IDEA
+
+### Prerequisites
+
+1. Ensure the Docker plugin is installed in IntelliJ IDEA.
+2. Your Node.js application should be configured to run in debug mode. This can be done by adding a `--inspect=0.0.0.0:9229` flag to your Node.js start script, allowing the debugger to attach to the Node.js process.
+
+### Steps
+
+#### 1. Edit Docker Compose File
+
+Add the debug port to your `docker-compose-local.yml` under the `frontend` service:
+
+```yml
+services:
+  frontend:
+    ...
+    ports:
+      - "8080:8080"
+      - "9229:9229"  # Debug port
+```
+
+#### 2. Edit `package.json`
+
+Modify your `start:dev` script to enable debugging. For example:
+
+```json
+"start:dev": "nodemon --inspect=0.0.0.0:9229 app.js",
+```
+
+#### 3. Rebuild and Restart Docker Containers
+
+Run the following commands to apply the changes:
+
+```bash
+docker-compose -f docker-compose-local.yml down
+docker-compose -f docker-compose-local.yml up
+```
+
+#### 4. IntelliJ IDEA Configuration
+
+- Navigate to `Run` -> `Edit Configurations...`
+- Click on the `+` button to add a new configuration.
+- Choose `Node.js`.
+- In the `Node.js` configuration, set the following:
+    - **Host**: `localhost`
+    - **Port**: `9229`
+- Save the configuration.
+
+#### 5. Attach Debugger
+
+With the configuration saved, you should now see your new debug configuration in the top-right corner of IntelliJ IDEA. Click the Debug icon (a bug symbol) to start debugging.
+
+#### 6. Set Breakpoints
+
+You can now set breakpoints in your code within IntelliJ IDEA.
+
+#### 7. Debug
+
+Trigger the code path that you want to debug. IntelliJ should hit the breakpoints you've set.
+
+This will allow you to debug your Node.js application running in a Docker container using IntelliJ IDEA.
+
+Certainly! Here's how to set up debugging for your Node.js application running in a Docker container using Visual Studio Code. This guide is in Markdown format for easy inclusion in your README file.
+
+## Debugging with Visual Studio Code
+
+### Prerequisites
+
+1. Make sure you have the Docker extension installed in Visual Studio Code.
+2. Your Node.js application should be configured to run in debug mode. This can be done by adding a `--inspect=0.0.0.0:9229` flag to your Node.js start script, allowing the debugger to attach to the Node.js process.
+
+### Steps
+
+#### 1. Edit Docker Compose File
+
+Add the debug port to your `docker-compose-local.yml` under the `frontend` service:
+
+```yml
+services:
+  frontend:
+    ...
+    ports:
+      - "8080:8080"
+      - "9229:9229"  # Debug port
+```
+
+#### 2. Edit `package.json`
+
+Modify your `start:dev` script to enable debugging. For example:
+
+```json
+"start:dev": "nodemon --inspect=0.0.0.0:9229 app.js",
+```
+
+#### 3. Rebuild and Restart Docker Containers
+
+Run the following commands to apply the changes:
+
+```bash
+docker-compose -f docker-compose-local.yml down
+docker-compose -f docker-compose-local.yml up
+```
+
+#### 4. VS Code Configuration
+
+Create a new file in your project root called `.vscode/launch.json` if it doesn't already exist, and add the following configuration:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Docker: Attach to Node",
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/usr/src/app",
+      "protocol": "inspector"
+    }
+  ]
+}
+```
+
+#### 5. Attach Debugger
+
+With the configuration saved, you should now see your new debug configuration in the Debug view in VS Code. Click the green "Start Debugging" button or press `F5` to start debugging.
+
+#### 6. Set Breakpoints
+
+You can now set breakpoints in your code within VS Code.
+
+#### 7. Debug
+
+Trigger the code path that you want to debug. VS Code should hit the breakpoints you've set.
+
+This will allow you to debug your Node.js application running in a Docker container using Visual Studio Code.
+
+
+Certainly! Below is the updated README.md file with the added sections about BrowserSync and the updated Table of Contents.
+
+
+
