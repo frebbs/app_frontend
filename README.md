@@ -1,39 +1,89 @@
-# App Frontend
+# Frontend GDS App
 
-## Description
-This is the frontend application for App1.
+## Overview
 
-## Table of Contents
-- [Dependencies](#dependencies)
-- [Getting Started](#getting-started)
-- [Scripts](#scripts)
+This is a frontend application, built using Express, Nunjucks, and the GOV.UK Design System. It serves as a template for creating scalable and maintainable frontend applications.
 
+## Prerequisites
+
+- Node.js v20.6.1 (specified in `.nvmrc`)
+- npm (comes with Node.js)
 
 ## Dependencies
-This project relies on the following dependencies:
 
-- `cors`: Version 2.8.5
-- `ejs`: Version 3.1.9
-- `express`: Version 4.18.2
+- Express
+- Nunjucks
+- GOV.UK Frontend
+- Sass
+- EJS
+- CORS
 
-## Getting Started
-To get started with this frontend application, follow these steps:
+## Dev Dependencies
 
-1. Clone the repository to your local machine.
+- Nodemon
+- Concurrently
 
-2. Install the project dependencies by running the following command:
+## Installation
+
+1. **Clone the repository**
+
+    ```bash
+    git clone https://github.com/your-repo/app1_frontend.git
+    ```
+
+2. **Navigate to the project directory**
+
+    ```bash
+    cd app1_frontend
+    ```
+
+3. **Install Node.js dependencies**
+
+    ```bash
+    npm install
+    ```
+
+## Running the Application
+
+### Development
+
+To run the application in development mode, use the following command:
+
+```bash
+npm run dev
+```
+
+This will start both the Express server and the Sass compiler in watch mode.
+
+### Viewing the Application
+
+Open your web browser and navigate to:
 
 ```
-npm install
-   ```
-
-3. Start the development server using Nodemon:
-
-```
-npm run start
+http://localhost:8080
 ```
 
-4. Your frontend application should now be running on a local server.
+## Directory Structure
 
-## Scripts
-- `npm run start`: Starts the development server using Nodemon.
+```
+.
+├── app.js
+├── controllers
+├── .gitignore
+├── middleware
+├── nodemon.json
+├── .nvmrc
+├── package.json
+├── package-lock.json
+├── public
+│   ├── css
+│   │   ├── main.css
+│   │   └── main.css.map
+│   └── js
+│       └── govuk.js
+├── README.md
+├── scss
+│   └── main.scss
+└── views
+    └── root.njk
+```
